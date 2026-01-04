@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
+    <title>Portofolio Arsitektur</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Arsitektur</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
+        /* Agar PDF memenuhi layar */
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #333; }
+        #pdf-viewer { width: 100%; height: 100%; }
+        .loading-text { color: white; text-align: center; padding-top: 20%; font-family: sans-serif; }
     </style>
 </head>
 <body>
-    <iframe src="https://docs.google.com/viewer?url=https://github.com/Kori-arch/architecture-portfolio/releases/download/architecture-portfolio-academic/ARCHITECTURAL.PORTFOLIO.ACADEMIC.pdf&embedded=true"></iframe>
+
+    <div id="pdf-viewer">
+        <p class="loading-text">Sedang memuat portofolio... Mohon tunggu (File 90MB)</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js"></script>
+    <script>
+        // GANTI URL DI BAWAH INI DENGAN LINK DARI LANGKAH 1
+        var pdfUrl = "https://github.com/Kori-arch/architecture-portfolio/releases/download/architecture-portfolio-academic/ARCHITECTURAL.PORTFOLIO.ACADEMIC.pdf";
+        
+        // Memaksa browser menampilkan PDF di dalam div #pdf-viewer
+        PDFObject.embed(pdfUrl, "#pdf-viewer", {
+            fallbackLink: "<p>Browser Anda tidak mendukung preview. <a href='[url]'>Klik di sini untuk download</a></p>"
+        });
+    </script>
 </body>
 </html>
